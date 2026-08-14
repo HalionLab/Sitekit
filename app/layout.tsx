@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { env } from '@/lib/env';
 import { SITE, siteOrigin, absoluteUrl, sharedOpenGraph, openingHours } from '@/lib/seo/site';
 import { site } from '@/site.config';
@@ -10,9 +10,8 @@ import './globals.css';
 // sitekit:fonts-start
 const body = Geist({ subsets: ['latin'], variable: '--font-g-body' });
 const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-g-mono' });
-const display = Instrument_Serif({
-  weight: '400',
-  style: ['normal', 'italic'],
+const display = Geist({
+  weight: ['400', '500'],
   subsets: ['latin'],
   variable: '--font-g-display',
 });

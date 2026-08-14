@@ -3,82 +3,80 @@ import type { SiteConfig } from '@/lib/config/types';
 import { validateSiteConfig } from '@/lib/config/validate';
 
 /**
- * Sitekit default config — a local-service business template (Summit
- * Services, a Denver HVAC/plumbing shop). Every marketing section, nav
- * link, and piece of business identity reads from this file. Hand-edit
- * freely; `npm run setup` regenerates a fresh one for a new brand and will
- * warn before overwriting your changes.
+ * Halion Lab — a workshop for useful software and practical AI, building in
+ * public. Dark monochrome brand; the homepage mirrors the Halion Lab design:
+ * hero → projects (servicesGrid) → build log (blogTeaser) → philosophy
+ * (processSteps) → community CTA (ctaBand).
+ *
+ * PLACEHOLDER contact details below (phone, address) — replace before launch.
  */
 export const site: SiteConfig = {
-  name: 'Summit Services',
-  tagline: 'Denver HVAC & plumbing.',
+  name: 'Halion Lab',
+  tagline: 'Ideas become products here.',
   description:
-    'Summit Services provides licensed HVAC and plumbing repair, installation, and maintenance for Denver-area homeowners, with flat-rate quotes and same-week scheduling.',
-  url: 'https://www.summitservicesdenver.com',
+    'Halion Lab is a workshop for exploring AI, testing software ideas, and building tools that remove friction from real work — shipped in public.',
+  url: 'https://halionlab.com',
 
-  logo: null,
+  logo: { src: '/halion-mark.svg', alt: 'Halion Lab', width: 28, height: 28 },
 
   business: {
-    legalName: 'Summit Services LLC',
+    legalName: 'Halion Lab',
+    // Placeholder phone — the validator requires one; swap in a real number.
     phone: '+1-555-010-0100',
-    email: 'hello@summitservicesdenver.com',
+    email: 'hello@halionlab.com',
+    // Placeholder address — feeds JSON-LD and the legal pages.
     address: {
-      street: '4200 Quebec St',
-      city: 'Denver',
-      region: 'CO',
-      postalCode: '80216',
+      street: '100 Placeholder Ave',
+      city: 'Albuquerque',
+      region: 'NM',
+      postalCode: '87101',
       country: 'US',
     },
     hours: {
-      mon: '7:00-18:00',
-      tue: '7:00-18:00',
-      wed: '7:00-18:00',
-      thu: '7:00-18:00',
-      fri: '7:00-18:00',
-      sat: '8:00-14:00',
+      mon: '9:00-17:00',
+      tue: '9:00-17:00',
+      wed: '9:00-17:00',
+      thu: '9:00-17:00',
+      fri: '9:00-17:00',
+      sat: 'closed',
       sun: 'closed',
     },
-    serviceAreas: ['Denver', 'Aurora', 'Lakewood', 'Arvada', 'Littleton', 'Centennial'],
+    serviceAreas: [],
+    // The lab's projects — rendered as the "What we're building" grid.
+    // `price` doubles as the status badge (Building / Live).
     services: [
       {
-        name: 'Heating repair & installation',
-        description: 'Furnace and heat pump repair, tune-ups, and full system replacement.',
-        href: '/#services',
+        name: 'Mosaic',
+        description:
+          'AI that sounds like you. A voice signature engine that helps AI write the way you do.',
+        href: '/blog',
+        price: 'Building',
       },
       {
-        name: 'Cooling & AC service',
-        description: 'AC repair, seasonal tune-ups, and central air installation.',
-        href: '/#services',
+        name: 'QuietOS',
+        description:
+          'Digital employees that quietly handle work. Rooms that run workflows and return finished work for approval.',
+        href: '/blog',
+        price: 'Building',
       },
       {
-        name: 'Plumbing repair',
-        description: 'Leaks, clogs, fixture repair, and re-piping for older Denver homes.',
-        href: '/#services',
-      },
-      {
-        name: 'Drain cleaning',
-        description: 'Camera inspection and hydro-jetting for stubborn or recurring clogs.',
-        href: '/#services',
-      },
-      {
-        name: 'Water heater installation',
-        description: 'Tank and tankless water heater replacement, same-week install.',
-        href: '/#services',
+        name: 'Small Business Trend',
+        description:
+          "Research and education for AI adoption. Practical AI insights for owners who don't have time for hype.",
+        href: '/blog',
+        price: 'Live',
       },
     ],
-    schemaType: 'LocalBusiness',
-    license: 'CO Master Plumber #12345 · HVAC Contractor #67890',
+    schemaType: 'Organization',
   },
 
   nav: [
-    { href: '/#services', label: 'Services' },
-    { href: '/#about', label: 'About' },
-    { href: '/#faq', label: 'FAQ' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/#services', label: 'Projects' },
+    { href: '/blog', label: 'Build Log' },
     { href: '/contact', label: 'Contact' },
   ],
   footerLinks: [
-    { href: '/blog', label: 'Blog' },
+    { href: '/blog', label: 'Build Log' },
     { href: '/contact', label: 'Contact' },
     { href: '/privacy', label: 'Privacy' },
     { href: '/terms', label: 'Terms' },
@@ -86,164 +84,54 @@ export const site: SiteConfig = {
   social: {},
 
   cta: {
-    primary: { label: 'Get a Free Quote', href: '/contact' },
-    secondary: { label: 'Call (555) 010-0100', href: 'tel:+15550100100' },
+    primary: { label: 'Explore Projects', href: '/#services' },
+    secondary: { label: 'Follow the Build Log', href: '/blog' },
   },
 
-  sections: [
-    'hero',
-    'logoStrip',
-    'servicesGrid',
-    'about',
-    'processSteps',
-    'statsBand',
-    'testimonials',
-    'faq',
-    'contactBand',
-    'hoursMap',
-  ],
+  sections: ['hero', 'servicesGrid', 'blogTeaser', 'processSteps', 'ctaBand'],
 
   copy: {
     hero: {
-      eyebrow: 'Denver, CO · Licensed & insured',
-      heading: 'Heating, cooling, and plumbing',
-      headingAccent: 'done right the first time.',
-      sub: 'Same-week scheduling for Denver homeowners who are tired of vague estimates and no-shows. One call gets you a flat-rate quote and a crew that actually shows up.',
-      primaryCta: { label: 'Get a Free Quote', href: '/contact' },
-      secondaryCta: { label: 'Call (555) 010-0100', href: 'tel:+15550100100' },
-      note: 'No obligation. No pushy sales pitch.',
-      highlights: {
-        title: 'Why homeowners call us',
-        items: [
-          'Licensed & insured',
-          'Upfront flat-rate quotes',
-          'Same-week scheduling',
-          '12-month workmanship guarantee',
-        ],
-      },
-    },
-    logoStrip: {
-      label: 'Brands we service',
-      logos: [
-        { src: '/logos/brand-1.svg', alt: 'Carrier' },
-        { src: '/logos/brand-2.svg', alt: 'Trane' },
-        { src: '/logos/brand-3.svg', alt: 'Rheem' },
-        { src: '/logos/brand-4.svg', alt: 'Bradford White' },
-        { src: '/logos/brand-5.svg', alt: 'Kohler' },
-      ],
+      eyebrow: 'Building useful software in public',
+      heading: 'Ideas become products here.',
+      sub: 'Halion Lab is our workshop for exploring AI, testing software ideas, and building tools that remove friction from real work.',
+      primaryCta: { label: 'Explore Projects', href: '/#services' },
+      secondaryCta: { label: 'Follow the Build Log', href: '/blog' },
+      note: 'Build quietly. Ship often.',
     },
     servicesGrid: {
-      eyebrow: 'What we do',
-      heading: 'Full-service HVAC & plumbing',
-      headingAccent: 'for the whole house.',
-      sub: 'Repair, install, and maintain the systems that keep a Denver home running — heating, cooling, and everything with a pipe attached.',
+      eyebrow: "What we're building",
+      heading: 'Each project is a living experiment.',
+      sub: "Not features on a roadmap — working software we're shaping in the open, one decision at a time.",
     },
-    about: {
-      eyebrow: 'About Summit Services',
-      heading: 'Local, licensed,',
-      headingAccent: 'and easy to reach.',
-      paragraphs: [
-        "Summit Services has been fixing furnaces, air conditioners, and pipes across the Denver metro for over 15 years. We're a local crew, not a franchise call center — the technician who quotes the job is the one who shows up to do it.",
-        "We built the business around the two things homeowners complain about most with contractors: not knowing the price until the invoice, and not knowing when — or if — anyone is coming. Every job gets a flat-rate quote up front and a scheduled window we keep.",
-      ],
-      bullets: {
-        label: "What we don't do",
-        items: [
-          'No commission pressure',
-          'No surprise line items',
-          'No bait-and-switch coupons',
-          'No disappearing after install',
-        ],
-      },
+    blogTeaser: {
+      eyebrow: 'Build log',
+      heading: 'Shipping in public.',
+      limit: 3,
     },
     processSteps: {
-      eyebrow: 'How it works',
-      heading: 'From call to clean walkthrough',
+      eyebrow: 'The philosophy',
+      heading: 'Build simple. Stay useful.',
       steps: [
         {
-          title: 'Call or book online',
-          description: 'Tell us what\'s going on. Most jobs get a same-week appointment window.',
+          title: 'Useful over impressive.',
+          description: 'Technology should remove burden, not create it.',
         },
         {
-          title: 'Flat-rate quote',
-          description: 'A licensed tech diagnoses the issue on site and gives you one price before any work starts.',
+          title: 'Systems over hacks.',
+          description: 'Durable processes beat clever demos.',
         },
         {
-          title: 'The work, done clean',
-          description: 'We protect floors and fixtures, do the job, and haul away the old parts.',
-        },
-        {
-          title: 'Walkthrough & guarantee',
-          description: 'We walk the fix with you and back it with a 12-month workmanship guarantee.',
+          title: 'Augment, not automate.',
+          description:
+            'Automation runs quietly in the background so people work with more leverage — not less control.',
         },
       ],
     },
-    statsBand: {
-      heading: 'Numbers that matter',
-      stats: [
-        { value: '15+ yrs', label: 'In business' },
-        { value: '4.9★', label: 'Average review' },
-        { value: '3,400+', label: 'Jobs completed' },
-        { value: '<24h', label: 'Typical response' },
-      ],
-      footnote: 'Placeholder numbers — replace with yours.',
-    },
-    testimonials: {
-      eyebrow: 'What neighbors say',
-      heading: 'Testimonials',
-      items: [
-        {
-          quote: "Furnace died on the coldest night of the year and they had someone out the next morning. Flat rate, no surprises, fixed in an hour.",
-          name: 'Rachel',
-          role: 'Washington Park',
-        },
-        {
-          quote: "Re-piped half our house after a slab leak. They walked us through every step and the price didn't move from the quote.",
-          name: 'Marcus',
-          role: 'Highlands',
-        },
-        {
-          quote: "We've used them for AC tune-ups two years running. Same tech both times, shows up when he says he will.",
-          name: 'Priya',
-          role: 'Stapleton',
-        },
-      ],
-    },
-    faq: {
-      eyebrow: 'Questions',
-      heading: 'Frequently asked questions',
-      items: [
-        {
-          q: 'What areas do you service?',
-          a: 'Denver, Aurora, Lakewood, Arvada, Littleton, and Centennial. Not sure if you\'re in range? Call us and we\'ll tell you straight away.',
-        },
-        {
-          q: 'How does pricing work?',
-          a: 'Every job gets a flat-rate quote before we start, based on an on-site diagnosis. No hourly surprises and no charge for the estimate itself.',
-        },
-        {
-          q: 'Do you handle emergencies?',
-          a: 'Yes — call the number above. Most emergency calls (no heat, active leaks) get a same-day or next-morning window.',
-        },
-        {
-          q: 'What brands do you service?',
-          a: 'Most major HVAC and plumbing brands, including Carrier, Trane, Rheem, Bradford White, and Kohler, plus older systems from prior installers.',
-        },
-        {
-          q: 'What does the guarantee cover?',
-          a: 'Every repair and installation is backed by a 12-month workmanship guarantee — if something we did fails, we come back and fix it at no charge.',
-        },
-      ],
-    },
-    contactBand: {
-      eyebrow: 'Get in touch',
-      heading: 'Ready when you are',
-      sub: 'Tell us what\'s going on and we\'ll get back to you with a free, no-obligation quote — usually within one business day.',
-      formSource: 'quote',
-    },
-    hoursMap: {
-      eyebrow: 'Hours & location',
-      heading: 'Visit or call us',
+    ctaBand: {
+      heading: 'Come build with us.',
+      sub: 'Follow the projects, read the notes, and watch ideas turn into products.',
+      cta: { label: 'Join the Newsletter', href: '/contact' },
     },
   },
 

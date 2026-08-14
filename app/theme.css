@@ -2,29 +2,32 @@
    Sitekit design tokens — THE file to edit for a rebrand.
    Colors also live in lib/theme.ts (used where CSS can't reach:
    OG images, emails). Keep both in sync; a unit test enforces it.
+
+   Halion Lab — dark monochrome. The page itself is dark, so the
+   "inverse" tokens are the raised panels rather than a dark band.
    ============================================================ */
 @theme {
   /* Surfaces */
-  --color-surface:              #FAF7F2;  /* page background */
-  --color-surface-alt:          #FFF1E0;  /* tinted band on light */
-  --color-surface-inverse:      #0E1020;  /* dark band background */
-  --color-surface-inverse-alt:  #1F2238;  /* raised panel on dark */
+  --color-surface:              #0B0B0D;  /* page background */
+  --color-surface-alt:          #0D0D10;  /* tinted band */
+  --color-surface-inverse:      #1A1A1F;  /* raised panel / band */
+  --color-surface-inverse-alt:  #1F1F24;  /* raised panel, hover */
 
   /* Foreground */
-  --color-fg:                   #0E1020;  /* body text on light */
-  --color-fg-inverse:           #FAF7F2;  /* text on dark bands */
-  --color-fg-muted:             #4A4D63;  /* secondary text on light */
+  --color-fg:                   #FFFFFF;  /* body text */
+  --color-fg-inverse:           #FFFFFF;  /* text on panels */
+  --color-fg-muted:             #A1A1AA;  /* secondary text */
 
-  /* Accents */
-  --color-accent:               #F75D6E;  /* links, primary CTA */
-  --color-accent-alt:           #F9A03F;  /* secondary accent, gradients */
-  --color-accent-contrast:      #FFFFFF;  /* text on accent backgrounds */
+  /* Accents — the brand is monochrome; the accent is white */
+  --color-accent:               #FFFFFF;  /* links, primary CTA */
+  --color-accent-alt:           #A1A1AA;  /* secondary accent, gradients */
+  --color-accent-contrast:      #0B0B0D;  /* text on accent backgrounds */
 
   /* Hairlines */
-  --color-border-token:         #E3DED4;
+  --color-border-token:         #2A2A2E;
 
   /* Fonts — the Google font families are configured in app/layout.tsx */
-  --font-display: var(--font-g-display), Georgia, serif;
-  --font-body:    var(--font-g-body), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-g-display), -apple-system, system-ui, sans-serif;
+  --font-body:    var(--font-g-body), -apple-system, system-ui, sans-serif;
   --font-mono:    var(--font-g-mono), ui-monospace, monospace;
 }

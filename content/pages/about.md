@@ -1,26 +1,27 @@
 ---
-title: About Summit Services
-excerpt: Local, licensed HVAC and plumbing crew serving the Denver metro for over fifteen years — flat-rate quotes, no subcontractors, no disappearing after install.
+title: About Halion Lab
+excerpt: Halion Lab is a workshop for useful software and practical AI — a small team exploring ideas in the open and shaping them into products people actually use.
 status: published
 ---
 
-Summit Services has been fixing furnaces, air conditioners, and pipes across the Denver metro for over fifteen years. We're a local crew, not a franchise call center — the technician who quotes your job is the same one who shows up to do it.
+Halion Lab is a workshop, not a product company in the usual sense. We explore AI, test software ideas, and build tools that remove friction from real work — and we do it in public, documenting the experiments, lessons, and product decisions as they happen.
 
 ## How we work
 
-We built the business around the two things homeowners complain about most with contractors: not knowing the price until the invoice, and not knowing when — or if — anyone is coming. Every job gets a flat-rate quote up front, based on an on-site diagnosis, and a scheduled window we keep.
+Every project here starts as a question about real work: what's eating an owner's evenings, what's making a writer sound like a bot, what's keeping a small team from using AI at all. If the question survives a working prototype, it becomes a living experiment — software we shape in the open, one decision at a time.
 
-That means:
+Three rules shape everything:
 
-- **No commission pressure.** Our technicians aren't paid to upsell you.
-- **No surprise line items.** The price we quote is the price you pay.
-- **No bait-and-switch coupons.** The "too good to be true" number isn't the real one.
-- **No disappearing after install.** Every repair and installation carries a 12-month workmanship guarantee.
+- **Useful over impressive.** Technology should remove burden, not create it.
+- **Systems over hacks.** Durable processes beat clever demos.
+- **Augment, not automate.** Automation runs quietly in the background so people work with more leverage — not less control.
 
-## Who we serve
+## What's in the lab
 
-We work across Denver, Aurora, Lakewood, Arvada, Littleton, and Centennial — heating, cooling, and anything with a pipe attached, in homes old and new. Most jobs get a same-week appointment window, and true emergencies (no heat, active leaks) are usually seen same-day or the next morning.
+- **Mosaic** — AI that sounds like you. A voice signature engine that helps AI write the way you do.
+- **QuietOS** — digital employees that quietly handle work. Rooms that run workflows and return finished work for approval.
+- **Small Business Trend** — research and education for AI adoption, for owners who don't have time for hype.
 
-> "We'd rather lose the upsell than lose your trust." That's been the rule since day one, and it's why most of our new customers come from a referral, not an ad.
+> Build quietly. Ship often.
 
-If you're not sure whether we cover your issue or your neighborhood, the fastest way to find out is to call — we'll tell you straight away, and if we can't help, we'll usually know who can.
+The [build log](/blog) is the front door — every experiment and lesson lands there as we go. If something we're building could remove friction from your work, [say hello](/contact).
