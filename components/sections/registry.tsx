@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from 'react';
-import type { SectionCopy, SectionKey } from '@/lib/config/types';
+import type { AnySectionKey, SectionCopy, SectionKey } from '@/lib/config/types';
+import { customSections } from './custom';
 import { About } from './About';
 import { BlogTeaser } from './BlogTeaser';
 import { ContactBand } from './ContactBand';
@@ -50,12 +51,30 @@ export const registry: Record<SectionKey, (copy: SectionCopy) => ReactNode> = {
  * `site.sections`/`site.copy`. The `registry` map itself is also consumed
  * directly by the kitchen-sink route (`app/(site)/preview/page.tsx`), which
  * renders every key with demo copy, and by the unit tests. */
-export function renderSections(keys: SectionKey[], copy: SectionCopy): ReactNode {
+export function renderSections(keys: AnySectionKey[], copy: SectionCopy): ReactNode {
   return (
     <>
       {keys.map(key => (
-        <Fragment key={key}>{registry[key](copy)}</Fragment>
+        <Fragment key={key}>{renderOne(key, copy)}</Fragment>
       ))}
     </>
   );
+}
+
+/** Dispatches one key: built-ins through `registry`, `custom:<name>` through
+ * the escape-hatch registry in `./custom`, validating its copy on the way. */
+function renderOne(key: AnySectionKey, copy: SectionCopy): ReactNode {
+  if (key.startsWith('custom:')) {
+    const name = key.slice('custom:'.length);
+    const mod = customSections[name];
+    if (!mod) {
+      throw new Error(
+        `Unknown custom section "custom:${name}" — no module registered in components/sections/custom/index.ts`
+      );
+    }
+    const validated = mod.validateCopy(copy.custom?.[name]);
+    const Component = mod.Component;
+    return <Component copy={validated} />;
+  }
+  return registry[key as SectionKey](copy);
 }

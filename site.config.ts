@@ -71,7 +71,7 @@ export const site: SiteConfig = {
   },
 
   nav: [
-    { href: '/#services', label: 'Projects' },
+    { href: '/#projects', label: 'Projects' },
     { href: '/blog', label: 'Build Log' },
     { href: '/contact', label: 'Contact' },
   ],
@@ -84,31 +84,19 @@ export const site: SiteConfig = {
   social: {},
 
   cta: {
-    primary: { label: 'Explore Projects', href: '/#services' },
+    primary: { label: 'Explore Projects', href: '/#projects' },
     secondary: { label: 'Follow the Build Log', href: '/blog' },
   },
 
-  sections: ['hero', 'servicesGrid', 'blogTeaser', 'processSteps', 'ctaBand'],
+  sections: [
+    'custom:halionHero',
+    'custom:halionProjects',
+    'custom:halionBuildLog',
+    'processSteps',
+    'custom:halionCommunity',
+  ],
 
   copy: {
-    hero: {
-      eyebrow: 'Building useful software in public',
-      heading: 'Ideas become products here.',
-      sub: 'Halion Lab is our workshop for exploring AI, testing software ideas, and building tools that remove friction from real work.',
-      primaryCta: { label: 'Explore Projects', href: '/#services' },
-      secondaryCta: { label: 'Follow the Build Log', href: '/blog' },
-      note: 'Build quietly. Ship often.',
-    },
-    servicesGrid: {
-      eyebrow: "What we're building",
-      heading: 'Each project is a living experiment.',
-      sub: "Not features on a roadmap — working software we're shaping in the open, one decision at a time.",
-    },
-    blogTeaser: {
-      eyebrow: 'Build log',
-      heading: 'Shipping in public.',
-      limit: 3,
-    },
     processSteps: {
       eyebrow: 'The philosophy',
       heading: 'Build simple. Stay useful.',
@@ -128,10 +116,107 @@ export const site: SiteConfig = {
         },
       ],
     },
-    ctaBand: {
-      heading: 'Come build with us.',
-      sub: 'Follow the projects, read the notes, and watch ideas turn into products.',
-      cta: { label: 'Join the Newsletter', href: '/contact' },
+    custom: {
+      halionHero: {
+        eyebrow: 'Building useful software in public',
+        heading: 'Ideas become products here.',
+        sub: 'Halion Lab is our workshop for exploring AI, testing software ideas, and building tools that remove friction from real work.',
+        image: { src: '/halion-mark.svg', alt: 'Halion Lab mark' },
+        primaryCta: { label: 'Explore Projects', href: '/#projects' },
+        secondaryCta: { label: 'Follow the Build Log', href: '/#buildlog' },
+      },
+      halionProjects: {
+        eyebrow: "What we're building",
+        heading: 'Each project is a living experiment.',
+        sub: "Not features on a roadmap — working software we're shaping in the open, one decision at a time.",
+        projects: [
+          {
+            name: 'Mosaic',
+            tagline: 'AI that sounds like you.',
+            description: 'A voice signature engine that helps AI write the way you do.',
+            status: 'Building',
+            live: false,
+            updated: 'Updated Jun 2026',
+            href: '/blog/mosaic-voice-profile-engine-expanded',
+            previewLabel: 'voice signature preview',
+          },
+          {
+            name: 'QuietOS',
+            tagline: 'Digital employees that quietly handle work.',
+            description: 'Rooms that run workflows and return finished work for approval.',
+            status: 'Building',
+            live: false,
+            updated: 'Updated Jun 2026',
+            href: '/blog/quietos-owner-inbox-redesigned',
+            previewLabel: 'owner inbox preview',
+          },
+          {
+            name: 'Small Business Trend',
+            tagline: 'Research and education for AI adoption.',
+            description: "Practical AI insights for owners who don't have time for hype.",
+            status: 'Live',
+            live: true,
+            updated: 'Updated Jun 2026',
+            href: '/blog/halion-lab-launched',
+            previewLabel: 'research preview',
+          },
+        ],
+      },
+      halionBuildLog: {
+        eyebrow: 'Build log',
+        heading: 'Shipping in public.',
+        sub: 'Every experiment, lesson, and product decision documented as we build.',
+        cta: { label: 'Read the full log', href: '/blog' },
+        entries: [
+          {
+            date: 'Jun 2026',
+            tag: 'Screens',
+            title: 'QuietOS Owner Inbox redesigned',
+            href: '/blog/quietos-owner-inbox-redesigned',
+            highlight: true,
+          },
+          {
+            date: 'Jun 2026',
+            tag: 'Notes',
+            title: 'Mosaic voice profile engine expanded',
+            href: '/blog/mosaic-voice-profile-engine-expanded',
+          },
+          {
+            date: 'Jun 2026',
+            tag: 'Video',
+            title: 'First SMS workflows tested',
+            href: '/blog/first-sms-workflows-tested',
+          },
+          {
+            date: 'Jun 2026',
+            tag: 'Article',
+            title: 'Halion Lab launched',
+            href: '/blog/halion-lab-launched',
+          },
+        ],
+      },
+      halionCommunity: {
+        eyebrow: 'Come build with us',
+        heading: 'Come build with us.',
+        sub: 'Follow the projects, read the notes, and watch ideas turn into products.',
+        ctas: [
+          { label: 'Join Newsletter', href: '/contact', primary: true },
+          { label: 'View Build Log', href: '/#buildlog' },
+          { label: 'See All Projects', href: '/#projects' },
+        ],
+        // Placeholder media wall from the design mockup — swap tiles for real
+        // screenshots/videos as build-log media accumulates.
+        tiles: [
+          { kind: 'media', label: 'screenshot', height: 220 },
+          { kind: 'video', label: 'video', height: 150 },
+          { kind: 'media', label: 'sketch', height: 180 },
+          { kind: 'note', lines: ['commit a1f4c2', 'feat: inbox triage', '+128 −42'], height: 130 },
+          { kind: 'media', label: 'product shot', height: 170 },
+          { kind: 'video', label: 'video', height: 200 },
+          { kind: 'media', label: 'screenshot', height: 160 },
+          { kind: 'media', label: 'sketch', height: 210 },
+        ],
+      },
     },
   },
 

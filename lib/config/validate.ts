@@ -54,13 +54,25 @@ export function validateSiteConfig(config: SiteConfig): void {
   }
 
   for (const key of config.sections) {
-    if (!ALL_SECTION_KEYS.includes(key)) {
+    if (key.startsWith('custom:')) {
+      // Escape-hatch sections: the name must resolve to copy.custom[<name>];
+      // deep shape validation belongs to the module in
+      // components/sections/custom/ (kept out of here so this file stays
+      // React-free — a unit test asserts config keys match registered modules).
+      const name = key.slice('custom:'.length);
+      if (!name) fail(`invalid custom section key "${key}" — expected "custom:<name>"`);
+      if (!config.copy.custom || !(name in config.copy.custom)) {
+        fail(`section "${key}" is listed in sections but has no matching copy.custom.${name} entry`);
+      }
+      continue;
+    }
+    if (!ALL_SECTION_KEYS.includes(key as SectionKey)) {
       fail(`unknown section key in sections: "${key}"`);
     }
   }
 
   for (const key of config.sections) {
-    if (SECTIONS_REQUIRING_COPY.includes(key) && !config.copy[key]) {
+    if (SECTIONS_REQUIRING_COPY.includes(key as SectionKey) && !config.copy[key as keyof typeof config.copy]) {
       fail(`section "${key}" is listed in sections but has no matching copy.${key} entry (${key} requires copy)`);
     }
   }

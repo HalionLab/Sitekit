@@ -22,7 +22,9 @@ describe('validateSiteConfig', () => {
     expect(() => validateSiteConfig(c)).toThrow(/unknown section/i);
   });
   it('rejects a section listed without copy when copy is required', () => {
-    const c = base(); c.copy.hero = undefined;
+    // Force the condition rather than assuming the shipped config lists 'hero'
+    // (rebrand-proof: custom-section configs may not use the built-in hero).
+    const c = base(); c.sections = ['hero']; c.copy.hero = undefined;
     expect(() => validateSiteConfig(c)).toThrow(/hero.*copy/i);
   });
   it('rejects analytics provider with missing siteId', () => {
