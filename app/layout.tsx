@@ -51,16 +51,20 @@ const businessSchema = {
   url: siteOrigin(),
   logo: absoluteUrl('/opengraph-image'),
   description: site.description,
-  telephone: site.business.phone,
+  ...(site.business.phone ? { telephone: site.business.phone } : {}),
   email: site.business.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.business.address.street,
-    addressLocality: site.business.address.city,
-    addressRegion: site.business.address.region,
-    postalCode: site.business.address.postalCode,
-    addressCountry: site.business.address.country,
-  },
+  ...(site.business.address
+    ? {
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: site.business.address.street,
+          addressLocality: site.business.address.city,
+          addressRegion: site.business.address.region,
+          postalCode: site.business.address.postalCode,
+          addressCountry: site.business.address.country,
+        },
+      }
+    : {}),
   areaServed: site.business.serviceAreas.map(name => ({ '@type': 'City', name })),
   openingHoursSpecification: openingHours(site.business.hours),
   sameAs: Object.values(site.social).filter(Boolean),

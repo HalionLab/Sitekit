@@ -30,7 +30,8 @@ const DAY_LABELS: Record<DayKey, string> = {
   sun: 'Sunday',
 };
 
-function formatAddress(): string {
+function formatAddress(): string | null {
+  if (!site.business.address) return null;
   const { street, city, region, postalCode } = site.business.address;
   return `${street}, ${city}, ${region} ${postalCode}`;
 }
@@ -61,14 +62,16 @@ export default function ContactPage() {
               </p>
 
               <dl className="mt-6 space-y-5">
-                <div>
-                  <dt className="text-xs text-fg-inverse/55">Phone</dt>
-                  <dd className="mt-1">
-                    <a href={`tel:${business.phone}`} className="text-lg font-medium hover:text-accent-alt">
-                      {business.phone}
-                    </a>
-                  </dd>
-                </div>
+                {business.phone && (
+                  <div>
+                    <dt className="text-xs text-fg-inverse/55">Phone</dt>
+                    <dd className="mt-1">
+                      <a href={`tel:${business.phone}`} className="text-lg font-medium hover:text-accent-alt">
+                        {business.phone}
+                      </a>
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt className="text-xs text-fg-inverse/55">Email</dt>
                   <dd className="mt-1">
@@ -80,10 +83,12 @@ export default function ContactPage() {
                     </a>
                   </dd>
                 </div>
-                <div>
-                  <dt className="text-xs text-fg-inverse/55">Address</dt>
-                  <dd className="mt-1 text-fg-inverse/85">{formatAddress()}</dd>
-                </div>
+                {formatAddress() && (
+                  <div>
+                    <dt className="text-xs text-fg-inverse/55">Address</dt>
+                    <dd className="mt-1 text-fg-inverse/85">{formatAddress()}</dd>
+                  </div>
+                )}
               </dl>
 
               <div className="mt-8 border-t border-fg-inverse/15 pt-6">

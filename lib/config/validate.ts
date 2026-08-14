@@ -49,8 +49,8 @@ export function validateSiteConfig(config: SiteConfig): void {
   if (!config.business.email || !EMAIL_RE.test(config.business.email)) {
     fail(`business.email is not a valid email: "${config.business.email}"`);
   }
-  if (!config.business.phone || !config.business.phone.trim()) {
-    fail('business.phone must be a non-empty string');
+  if (config.business.phone !== undefined && !config.business.phone.trim()) {
+    fail('business.phone must be a non-empty string when present (omit the field for no public phone)');
   }
 
   for (const key of config.sections) {

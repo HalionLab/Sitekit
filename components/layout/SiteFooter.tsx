@@ -5,7 +5,8 @@ import { features } from '@/lib/config/features';
 /** Footer entries pointing at gated routes (currently just `/blog`) disappear when their feature is off. */
 const footerLinks = site.footerLinks.filter(item => features.blog || !item.href.startsWith('/blog'));
 
-function formatAddress(): string {
+function formatAddress(): string | null {
+  if (!site.business.address) return null;
   const { street, city, region, postalCode } = site.business.address;
   return `${street}, ${city}, ${region} ${postalCode}`;
 }
@@ -46,17 +47,19 @@ export function SiteFooter() {
           </nav>
 
           <div className="text-sm">
-            <p>
-              <a href={`tel:${business.phone}`} className="text-fg-inverse/85 hover:text-accent-alt">
-                {business.phone}
-              </a>
-            </p>
-            <p className="mt-2">
+            {business.phone && (
+              <p>
+                <a href={`tel:${business.phone}`} className="text-fg-inverse/85 hover:text-accent-alt">
+                  {business.phone}
+                </a>
+              </p>
+            )}
+            <p className="mt-2 first:mt-0">
               <a href={`mailto:${business.email}`} className="break-all text-fg-inverse/85 hover:text-accent-alt">
                 {business.email}
               </a>
             </p>
-            <p className="mt-2 text-fg-inverse/70">{formatAddress()}</p>
+            {formatAddress() && <p className="mt-2 text-fg-inverse/70">{formatAddress()}</p>}
             {business.serviceAreas.length > 0 && (
               <p className="mt-4 text-fg-inverse/55 text-xs leading-relaxed">
                 Serving {business.serviceAreas.join(', ')}
