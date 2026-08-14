@@ -198,5 +198,9 @@ Run `npx vitest run tests/unit/theme-sync.test.ts` on its own after any color ch
   measurement ID in `G-XXXXXXX` form (the validator enforces the shape).
   **The template emits the script and nothing else** — a cookie/consent banner
   and consent-mode defaults are the site owner's legal responsibility.
+- **Go live** — `bash scripts/go-live.sh`: an interactive walkthrough that
+  deploys the site to Vercel and connects a personal domain, opening each page
+  and saying exactly what to click. Vercel-only for now; Sitekit is a standard
+  Next.js app, so Netlify/Cloudflare/Railway also work — adapt stages 3–5.
 - **Start over** — `npm run setup`. It regenerates config + theme + fonts from a
   preset and warns first if `site.config.ts` was hand-edited.
