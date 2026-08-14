@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+playwright-report
+test-results
+
+# Next.js
+.next
+out
+next-env.d.ts
+
+# Production
+build
+dist
+
+# Misc
+.DS_Store
+*.pem
+
+# Local env files
+.env*.local
+.env
+
+# npm run setup overwrite-guard hash (regenerated each run)
+.sitekit-config-hash
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor / agent caches
+.claude/*
+!.claude/skills/
+.gstack/
+.vscode/
+.idea/
+
+# Supabase CLI
+supabase/.temp/
+supabase/.branches/

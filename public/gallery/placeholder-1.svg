@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Placeholder photo 1">
+  <rect width="800" height="600" fill="#FAF7F2"/>
+  <circle cx="220" cy="240" r="220" fill="#F9A03F" fill-opacity="0.28"/>
+  <circle cx="560" cy="400" r="260" fill="#F75D6E" fill-opacity="0.22"/>
+  <text x="400" y="560" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="0.5" fill="#4A4D63" fill-opacity="0.6">Placeholder — replace with your photos</text>
+</svg>

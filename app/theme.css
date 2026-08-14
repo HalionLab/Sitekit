@@ -1,0 +1,30 @@
+/* ============================================================
+   Sitekit design tokens — THE file to edit for a rebrand.
+   Colors also live in lib/theme.ts (used where CSS can't reach:
+   OG images, emails). Keep both in sync; a unit test enforces it.
+   ============================================================ */
+@theme {
+  /* Surfaces */
+  --color-surface:              #FAF7F2;  /* page background */
+  --color-surface-alt:          #FFF1E0;  /* tinted band on light */
+  --color-surface-inverse:      #0E1020;  /* dark band background */
+  --color-surface-inverse-alt:  #1F2238;  /* raised panel on dark */
+
+  /* Foreground */
+  --color-fg:                   #0E1020;  /* body text on light */
+  --color-fg-inverse:           #FAF7F2;  /* text on dark bands */
+  --color-fg-muted:             #4A4D63;  /* secondary text on light */
+
+  /* Accents */
+  --color-accent:               #F75D6E;  /* links, primary CTA */
+  --color-accent-alt:           #F9A03F;  /* secondary accent, gradients */
+  --color-accent-contrast:      #FFFFFF;  /* text on accent backgrounds */
+
+  /* Hairlines */
+  --color-border-token:         #E3DED4;
+
+  /* Fonts — the Google font families are configured in app/layout.tsx */
+  --font-display: var(--font-g-display), Georgia, serif;
+  --font-body:    var(--font-g-body), system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-g-mono), ui-monospace, monospace;
+}
