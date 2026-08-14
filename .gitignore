@@ -23,7 +23,6 @@ dist
 
 # Local env files
 .env*.local
-.env
 
 # npm run setup overwrite-guard hash (regenerated each run)
 .sitekit-config-hash
@@ -44,3 +43,4 @@ dist
 # Supabase CLI
 supabase/.temp/
 supabase/.branches/
+config.bat

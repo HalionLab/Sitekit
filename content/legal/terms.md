@@ -20,8 +20,8 @@ To the fullest extent permitted by law, {{legalName}} is not liable for any indi
 
 ## Governing law
 
-These terms are governed by the laws of the jurisdiction where {{legalName}} operates ({{address}}), without regard to conflict-of-law principles.
+These terms are governed by the laws of the jurisdiction where {{legalName}} operates, without regard to conflict-of-law principles.
 
 ## Contact
 
-Questions about these terms? Email {{email}} or call {{phone}}.
+Questions about these terms? Email {{email}}.
