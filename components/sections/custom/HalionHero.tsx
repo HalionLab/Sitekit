@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { defineCustomSection } from './define';
 import { ParticleCanvas } from './ParticleCanvas';
@@ -33,13 +34,15 @@ function HalionHero({ copy }: { copy: HalionHeroCopy }) {
             aria-hidden
             className="absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-fg)_16%,transparent)_0%,color-mix(in_srgb,var(--color-fg)_4%,transparent)_46%,transparent_70%)]"
           />
-          {/* eslint-disable-next-line @next/next/no-img-element -- decorative brand mark, SVG */}
-          <img
+          {/* mix-blend-screen melts an opaque-black logo background into the
+              page surface, so both transparent and black-backed marks work */}
+          <Image
             src={copy.image.src}
             alt={copy.image.alt}
-            width={300}
-            height={300}
-            className="relative block drop-shadow-[0_0_30px_color-mix(in_srgb,var(--color-fg)_25%,transparent)]"
+            width={340}
+            height={340}
+            priority
+            className="relative block mix-blend-screen drop-shadow-[0_0_30px_color-mix(in_srgb,var(--color-fg)_25%,transparent)]"
           />
         </div>
 

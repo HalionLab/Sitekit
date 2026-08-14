@@ -121,7 +121,7 @@ export const site: SiteConfig = {
         eyebrow: 'Building useful software in public',
         heading: 'Ideas become products here.',
         sub: 'Halion Lab is our workshop for exploring AI, testing software ideas, and building tools that remove friction from real work.',
-        image: { src: '/halion-mark.svg', alt: 'Halion Lab mark' },
+        image: { src: '/halion-sphere.png', alt: 'Halion Lab mark' },
         primaryCta: { label: 'Explore Projects', href: '/#projects' },
         secondaryCta: { label: 'Follow the Build Log', href: '/#buildlog' },
       },
