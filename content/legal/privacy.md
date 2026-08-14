@@ -34,4 +34,4 @@ We may update this policy from time to time. The version in effect is always pos
 
 ## Contact us
 
-Questions about this policy? Email {{email}} or write to {{legalName}}, {{address}}.
+Questions about this policy? Email {{email}}.

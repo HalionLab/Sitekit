@@ -21,17 +21,9 @@ export const site: SiteConfig = {
 
   business: {
     legalName: 'Halion Lab',
-    // Placeholder phone — the validator requires one; swap in a real number.
-    phone: '+1-555-010-0100',
+    // No public phone or street address — an online-only lab. The optional
+    // fields stay omitted; footer/contact/JSON-LD show email only.
     email: 'hello@halionlab.com',
-    // Placeholder address — feeds JSON-LD and the legal pages.
-    address: {
-      street: '100 Placeholder Ave',
-      city: 'Albuquerque',
-      region: 'NM',
-      postalCode: '87101',
-      country: 'US',
-    },
     hours: {
       mon: '9:00-17:00',
       tue: '9:00-17:00',
