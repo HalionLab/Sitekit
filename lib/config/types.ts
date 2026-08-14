@@ -3,6 +3,15 @@ export type SectionKey =
   | 'pricing' | 'contactBand' | 'teamGrid' | 'processSteps' | 'statsBand'
   | 'logoStrip' | 'ctaBand' | 'hoursMap' | 'blogTeaser';
 
+/**
+ * Escape-hatch key for site-specific sections that aren't part of the built-in
+ * library. `custom:<name>` resolves to a module in `components/sections/custom/`
+ * (registered in its `index.ts`); its copy lives at `copy.custom[<name>]` and is
+ * validated by the module's own `validateCopy`, not the closed shapes below.
+ */
+export type CustomSectionKey = `custom:${string}`;
+export type AnySectionKey = SectionKey | CustomSectionKey;
+
 export interface Cta { label: string; href: string }
 export interface NavLink { href: string; label: string }
 export interface Service { name: string; description: string; href?: string; price?: string }
@@ -53,6 +62,9 @@ export interface SectionCopy {
   pricing?: PricingCopy; contactBand?: ContactBandCopy; teamGrid?: TeamGridCopy;
   processSteps?: ProcessStepsCopy; statsBand?: StatsBandCopy; logoStrip?: LogoStripCopy;
   ctaBand?: CtaBandCopy; hoursMap?: HoursMapCopy; blogTeaser?: BlogTeaserCopy;
+  /** Copy for `custom:<name>` sections, keyed by name; shape is owned and
+   * validated by the matching module in `components/sections/custom/`. */
+  custom?: Record<string, unknown>;
 }
 
 export interface SiteConfig {
@@ -65,7 +77,7 @@ export interface SiteConfig {
   footerLinks: NavLink[];
   social: Partial<Record<'facebook' | 'instagram' | 'linkedin' | 'x' | 'youtube' | 'tiktok', string>>;
   cta: { primary: Cta; secondary?: Cta };
-  sections: SectionKey[];
+  sections: AnySectionKey[];
   copy: SectionCopy;
   features: { blog: boolean; cms: boolean; gatedDownload: boolean; analytics: boolean };
   analytics: { provider: 'plausible' | 'umami' | 'ga4' | 'none'; siteId?: string; scriptUrl?: string };

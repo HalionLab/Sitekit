@@ -18,6 +18,7 @@ app/theme.css           11 color tokens + 3 font vars (Tailwind v4 @theme)
 lib/theme.ts            the same 11 colors as TS, for OG images + emails (MUST match theme.css)
 app/layout.tsx          fonts (marked region), metadata, LocalBusiness JSON-LD
 components/sections/    15 section components + registry.tsx (renderSections drives the homepage)
+components/sections/custom/  escape hatch: per-site sections via `custom:<name>` keys (ships empty)
 presets/                4 vertical starter configs — consumed ONLY by scripts/setup.ts
 content/                markdown: posts/, pages/, legal/ — the default content source
 lib/content, lib/leads  adapters: file-vs-Supabase content, email-vs-Supabase leads
@@ -171,6 +172,12 @@ Run `npx vitest run tests/unit/theme-sync.test.ts` on its own after any color ch
 - **Add / remove / reorder a homepage section** — edit `site.sections[]` (order
   is render order) and add the matching `site.copy.<key>`. Sections requiring
   copy are listed in `lib/config/validate.ts`; omitting it throws at build.
+- **Add a one-off section the 15 built-ins can't express** — the escape hatch:
+  create `components/sections/custom/<Name>.tsx` with `defineCustomSection`
+  (see `custom/index.ts` for the 3-step recipe), register it there, then list
+  `'custom:<name>'` in `sections[]` with copy at `copy.custom.<name>`. Rules:
+  design tokens only (`tests/unit/token-discipline.test.ts` fails the build on
+  color literals) and the module's `validateCopy` must reject bad copy shapes.
 - **Swap fonts** — see checklist step 4. Any `next/font/google` family works;
   keep the CSS variable names.
 - **Enable the blog** — `features.blog: true` (default) and drop markdown in
