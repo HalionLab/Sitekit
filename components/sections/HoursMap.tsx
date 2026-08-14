@@ -13,13 +13,14 @@ const DAY_LABELS: Record<DayKey, string> = {
   sun: 'Sunday',
 };
 
-function formatAddress(): string {
+function formatAddress(): string | null {
+  if (!site.business.address) return null;
   const { street, city, region, postalCode } = site.business.address;
   return `${street}, ${city}, ${region} ${postalCode}`;
 }
 
-function directionsUrl(): string {
-  return `https://maps.google.com/?q=${encodeURIComponent(formatAddress())}`;
+function directionsUrl(address: string): string {
+  return `https://maps.google.com/?q=${encodeURIComponent(address)}`;
 }
 
 export function HoursMap({ copy }: { copy: HoursMapCopy }) {
@@ -60,12 +61,12 @@ export function HoursMap({ copy }: { copy: HoursMapCopy }) {
               loading="lazy"
               className="w-full aspect-[4/3] rounded-2xl border-0"
             />
-          ) : (
+          ) : formatAddress() ? (
             <div className="rounded-2xl bg-surface border border-border-token p-8">
               <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-fg-muted">Address</p>
               <p className="mt-3 text-lg text-fg">{formatAddress()}</p>
               <a
-                href={directionsUrl()}
+                href={directionsUrl(formatAddress() as string)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 text-accent font-medium hover:text-accent-alt"
@@ -74,7 +75,7 @@ export function HoursMap({ copy }: { copy: HoursMapCopy }) {
                 <span aria-hidden>→</span>
               </a>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>
