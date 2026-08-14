@@ -20,9 +20,13 @@ export type DayKey = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun';
 
 export interface BusinessInfo {
   legalName: string;
-  phone: string;          // E.164-ish, e.g. '+1-555-0100'
+  /** E.164-ish, e.g. '+1-555-0100'. Omit for businesses with no public phone —
+   * phone UI (footer, contact cards) and JSON-LD `telephone` disappear. */
+  phone?: string;
   email: string;
-  address: Address;
+  /** Omit for online-only businesses — address UI and JSON-LD `address`
+   * disappear; `{{address}}` in legal templates resolves to ''. */
+  address?: Address;
   hours: Record<DayKey, string>;   // '8:00-17:00' or 'closed'
   serviceAreas: string[];
   services: Service[];

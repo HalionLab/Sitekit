@@ -10,11 +10,16 @@ describe('renderLegal', () => {
 
   it('substitutes {{legalName}}, {{phone}}, {{address}}, {{siteUrl}}, {{date}}', () => {
     const out = renderLegal('{{legalName}} | {{phone}} | {{address}} | {{siteUrl}} | {{date}}');
-    const { street, city, region, postalCode } = site.business.address;
     const parts = out.split(' | ');
     expect(parts[0]).toBe(site.business.legalName);
-    expect(parts[1]).toBe(site.business.phone);
-    expect(parts[2]).toBe(`${street}, ${city}, ${region} ${postalCode}`);
+    // phone/address are optional; when absent they resolve to '' (rebrand-proof)
+    expect(parts[1]).toBe(site.business.phone ?? '');
+    if (site.business.address) {
+      const { street, city, region, postalCode } = site.business.address;
+      expect(parts[2]).toBe(`${street}, ${city}, ${region} ${postalCode}`);
+    } else {
+      expect(parts[2]).toBe('');
+    }
     expect(parts[3]).toMatch(/^https?:\/\//);
     expect(parts[4]).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });

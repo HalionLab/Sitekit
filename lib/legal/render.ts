@@ -1,8 +1,11 @@
 import { site } from '@/site.config';
 import { siteOrigin } from '@/lib/seo/site';
 
-/** Single-line address for legal copy: "street, city, region postalCode". */
+/** Single-line address for legal copy: "street, city, region postalCode".
+ * Resolves to '' when the business has no public address — reword the legal
+ * templates for such sites so sentences don't reference a blank. */
 function formatAddress(): string {
+  if (!site.business.address) return '';
   const { street, city, region, postalCode } = site.business.address;
   return `${street}, ${city}, ${region} ${postalCode}`;
 }
@@ -16,7 +19,7 @@ const PLACEHOLDERS: Record<string, () => string> = {
   businessName: () => site.name,
   legalName: () => site.business.legalName,
   email: () => site.business.email,
-  phone: () => site.business.phone,
+  phone: () => site.business.phone ?? '',
   address: () => formatAddress(),
   siteUrl: () => siteOrigin(),
   date: () => buildDate(),
