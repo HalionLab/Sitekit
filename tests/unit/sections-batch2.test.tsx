@@ -8,6 +8,7 @@ import { Faq } from '@/components/sections/Faq';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { Pricing } from '@/components/sections/Pricing';
 import { TeamGrid } from '@/components/sections/TeamGrid';
+import { site } from '@/site.config';
 
 afterEach(cleanup);
 
@@ -15,8 +16,9 @@ describe('ServicesGrid', () => {
   it('renders heading and services from site config', () => {
     render(<ServicesGrid copy={{ heading: 'What we do' }} />);
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('What we do');
-    // site.config default business services include "Heating repair & installation"
-    expect(screen.getByText('Heating repair & installation')).toBeInTheDocument();
+    // ServicesGrid falls back to site.business.services — assert against the
+    // live config, not a hardcoded string, so rebrands don't break the suite.
+    expect(screen.getByText(site.business.services[0].name)).toBeInTheDocument();
   });
 });
 

@@ -116,7 +116,9 @@ describe('WelcomeEmail component', () => {
     );
 
     expect(html).toContain(`href="${downloadUrl}"`);
-    expect(html).toContain(`Visit ${site.name}`);
+    // Rendered HTML escapes entities — a site.name containing "&" (common in
+    // business names) arrives as "&amp;", so escape the expectation too.
+    expect(html).toContain(`Visit ${site.name.replace(/&/g, '&amp;')}`);
     expect(html).toContain(`href="${unsubscribeUrl.replace(/&/g, '&amp;')}"`);
   });
 });

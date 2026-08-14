@@ -59,6 +59,11 @@ Do these in order. Steps 2–6 are the hand-edit path; step 1 is the shortcut.
    an accessibility lie. A real logo goes in `site.logo` (`{src, alt, width,
    height}`); leave it `null` for the auto monogram. The favicon is generated
    (`app/icon.tsx`) — it rebrands itself, nothing to swap.
+7. **Preset testimonials and stats are sample copy, not facts.** Every preset
+   ships invented quotes, names, and numbers so the first render looks real.
+   During a rebrand, replace them with the owner's real testimonials and
+   numbers — or drop those sections from `sections[]` rather than shipping
+   fabricated social proof.
 7. **`npm run verify`** — typecheck + lint + unit tests. Must pass.
 8. **Look at it** — `npm run dev`, then `/` (the real homepage) and `/preview`
    (every section, so restyling is visible even for unused ones).
